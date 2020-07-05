@@ -1,13 +1,212 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+:root {
+    --main-background: rgba(19, 19, 19, 0.808);
+    --header-background: rgb(19, 19, 19);
+    --header-button-background: rgb(177, 177, 177);
+    --main-text: rgb(202, 185, 185);
+    --main-border: rgb(17, 18, 24);
+    --red-border: rgb(146, 24, 24);
+    --read-button-hover: rgb(36, 145, 99);
+    --delete-button-hover: rgb(187, 41, 41);
+    --header-border: rgb(58, 58, 58);
+
+    --input-window-overlay: rgba(165, 44, 44, 0.767);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+}
+html {
+    background-color: var(--main-background);
+    scrollbar-color: var(--header-button-background) var(--main-background);
+    scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+    width: 0.5rem;
+    border: 1px solid var(--header-button-background);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--header-border);
+}
+*::-webkit-scrollbar-track {
+    background-color: var(--main-background);
+}
+body {
+    margin: 0px;
+    background-color: var(--main-background);
+    width: 100%;
+}
+button {
+    font-family: 'Ubuntu', sans-serif;
+}
+.main {
+    width: 100%;
+}
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: var(--header-background);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--header-border);
+}
+header > h1 {
+    margin: auto;
+    color: var(--main-text);
+}
+#input-window {
+    position: fixed;
+    z-index: 10;
+    background-color: var(--input-window-overlay);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: -2rem;
+}
+#input-window-cancel {
+    position: fixed;
+    left: auto;
+    bottom: auto;
+    top: 12%;
+    right: 1%;
+
+    background: none;
+    border: none;
+    color: var(--main-border);
+    font-size: 2rem;
+
+    transition: 0.5s;
+}
+#input-window-cancel:hover {
+    color: var(--header-button-background);
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+    padding: 1rem;
+    border: 1px solid var(--main-border);
+    justify-content: space-between;
+    align-items: center;
+}
+.input > label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    width: 100%;
+}
+.input > label > input {
+    margin: 0.3rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    background-color: var(--main-background);
+    color: var(--main-text);
+
+    outline: none;
+    border: 2px solid var(--red-border);
+}
+.submit-button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--main-background);
+    color: var(--main-text);
+    border: none;
+    font-size: 1.3rem;
+
+    outline: none;
+    transition: 0.5s;
+}
+.submit-button:hover {
+    background-color: var(--header-button-background);
+    color: var(--main-background);
+}
+.library {
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+.book-adder {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    place-self: center;
+
+    background-color: var(--header-button-background);
+    color: var(--main-background);
+
+    outline: none;
+    border: 1px solid var(--main-border);
+    border-radius: 25%;
+
+    transition: filter 0.5s;
+}
+.book-adder:hover {
+    filter: brightness(1.4);
+}
+.book {
+    display: flex;
+    flex-direction: column;
+    background: url('./background.png');
+}
+.book > h2 {
+    margin-top: 0;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--main-text);
+}
+.book > p {
+    width: 100%;
+    margin-left: 1rem;
+    font-size: 1.3rem;
+    color: var(--main-text);
+}
+.book-buttons > button {
+    outline: none;
+    width: 50%;
+    background: none;
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+
+    transition: color 0.5s;
+}
+.read-button:hover {
+    color: var(--read-button-hover);
+}
+.delete-button:hover {
+    color: var(--delete-button-hover);
+}
+footer {
+    top: auto;
+    height: 60px;
+    background-color: var(--header-background);
+    border-top: 1px solid var(--header-border);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--header-border);
+    letter-spacing: 2px;
+    padding-left: 2rem;
+}
+footer > a {
+    margin: 0rem 1rem;
+    text-decoration: none;
+    color: var(--red-border);
+}
+footer > a:hover {
+    color: var(--main-text);
 }
